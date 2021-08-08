@@ -1,16 +1,15 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <router-link :to="{path: '/Home/'+lxl,query:{name:1,age:2}}">lxl</router-link>
-    <router-view></router-view>
-
+    <HelloWorld ref="hello" :msg="msg" @h_click="click()">
+            <p slot="center">插槽</p>
+    </HelloWorld>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import HelloWorld from '../components/HelloWorld.vue'
 
 export default {
   name: 'Home',
@@ -19,7 +18,13 @@ export default {
   },
   data(){
     return{
-      lxl:"lxl"
+      lxl:"lxl",
+      msg:"111"
+    }
+  },
+  methods:{
+    click(){
+      console.log(11111)
     }
   }
 }

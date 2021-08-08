@@ -1,29 +1,15 @@
 <template>
     <div id="app">
-        <img src="./assets/logo.png">
-        <div>
-            <el-button @click="clik_bt">el-button</el-button>
-        </div>
-        <HelloWorld ref="hello" :msg="msg" @h_click="click()">
-            <p slot="center">插槽</p>
-        </HelloWorld>
-        <select name="abc" v-model="hobbies">
-            <option value="苹果">苹果</option>
-            <option value="橘子">橘子</option>
-        </select>
-        <br>
-        我喜欢的水果:{{hobbies}}
+        <router-link to="/About" replace active-class="active">About</router-link>
+        <router-link to="/Home" tag="button">Home</router-link>
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
-    import HelloWorld from './components/HelloWorld.vue'
-
     export default {
         name: 'app',
-        components: {
-            HelloWorld
-        },
+        components: {},
         data() {
             return {
                 messages: "200ok",
