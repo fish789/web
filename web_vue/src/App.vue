@@ -4,8 +4,15 @@
         <div>
             <el-button @click="clik_bt">el-button</el-button>
         </div>
-        <HelloWorld msg="Welcome to Your Vue.js App"/>
-        <p>{{$store.state.counter}}</p>
+        <HelloWorld ref="hello" :msg="msg" @h_click="click()">
+            <p slot="center">插槽</p>
+        </HelloWorld>
+        <select name="abc" v-model="hobbies">
+            <option value="苹果">苹果</option>
+            <option value="橘子">橘子</option>
+        </select>
+        <br>
+        我喜欢的水果:{{hobbies}}
     </div>
 </template>
 
@@ -17,21 +24,28 @@
         components: {
             HelloWorld
         },
+        data() {
+            return {
+                messages: "200ok",
+                hobbies: [],
+                msg: "father!",
+                num: 0
+            }
+        },
         methods: {
-            test: () => new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    resolve({k: "hello word!"});
-                    reject("yes");
-                }, 1000)
-                // throw "sb";
+            clik_bt() {
+                console.log(this.$refs["hello"])
+            },
+            click() {
+                this.num ++
+            }
 
-            }).then(results => {
-                console.log(results)
-            })
-                .catch(err => {
-                    console.log(err)
-                }),
-            clik_bt(){this.$store.commit('add')}
+        },
+        watch: {
+            num(newvalue, oldvalue) {
+                console.log(newvalue)
+                console.log(oldvalue)
+            }
         }
     }
 </script>
